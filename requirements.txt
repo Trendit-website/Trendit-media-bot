@@ -1,8 +1,5 @@
 cachetools==5.3.3
-celery==5.3.6
-cloudinary==1.38.0
 Deprecated==1.2.14
-Flask==3.0.1
 gunicorn==21.2.0
 python-slugify==8.0.3
 python-telegram-bot==21.3

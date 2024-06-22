@@ -68,7 +68,7 @@ def console_log(label: str ='Label', data: any =None) -> None:
         data: The data to be printed. Can be of any type. Defaults to None.
     """
 
-    logger.info(f'\n\n{label:-^50}\n', data, f'\n{"//":-^50}\n\n')
+    logger.info(f'\n\n{label:-^50}\n {data} \n{"//":-^50}\n\n')
 
 
 def log_exception(label: str ='EXCEPTION', data='Nothing') -> None:

@@ -41,9 +41,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         response: str = handle_response(text)
         
-    print("Bot:", response)
+    console_log("Bot:", response)
     await update.message.reply_text(response)
     
 
 async def error(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    print(f"Update {update} caused error {context.error}")
+    console_log(f"Update {update} caused error {context.error}", context.error)

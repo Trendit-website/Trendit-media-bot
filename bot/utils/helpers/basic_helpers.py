@@ -82,5 +82,17 @@ def log_exception(label: str ='EXCEPTION', data='Nothing') -> None:
     """
 
     logging.exception(f'\n\n{label:-^50}\n {str(data)} \n {"//":-^50}\n\n')  # Log the error details for debugging
+    
+def log_error(label: str ='EXCEPTION', data='Nothing') -> None:
+    """
+    Log an error with details to a logging handler for debugging.
+
+    Args:
+        label (str, optional): A label for the exception, centered and surrounded by dashes. Defaults to 'EXCEPTION'.
+        data: Additional data to be logged along with the exception. Defaults to 'Nothing'.
+    """
+
+    logging.error(msg=label, exc_info=data)
+    logging.exception(f'\n\n{label:-^50}\n {str(data)} \n {"//":-^50}\n\n')  # Log the error details for debugging
 
 

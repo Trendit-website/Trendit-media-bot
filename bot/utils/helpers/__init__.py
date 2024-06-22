@@ -8,4 +8,4 @@ It includes various helper functions grouped by their functionality.
 @package: Trendit³ Bot
 '''
 import random, string
-from .basic_helpers import console_log, log_exception
+from .basic_helpers import console_log, log_exception, log_error

@@ -1,14 +1,18 @@
+from flask import Flask, request
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes, CallbackQueryHandler
 
 from .commands import register_commands
 from .handlers import error_handler, callback_query_handler
 from .responses import handle_message, handle_response
-from config import Config
+from config import Config, config_by_name
 
-def main():
+def start_bot(config_name=Config.ENV):
     """Start the bot."""
     print("starting Bot...")
+    
+    bot = Flask(__name__)
+    bot.config.from_object(config_by_name[config_name])
     
     token = Config.TELEGRAM_BOT_TOKEN
     
@@ -31,3 +35,5 @@ def main():
 
     # # Handle callback queries (e.g., buttons in Telegram messages)
     # application.add_handler(CallbackQueryHandler(callback_query_handler))
+    
+    return bot

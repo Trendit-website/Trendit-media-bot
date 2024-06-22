@@ -1,17 +1,13 @@
-import logging
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes, CallbackQueryHandler
 
 from .commands import register_commands
 from .handlers import error_handler, callback_query_handler
 from .responses import handle_message, handle_response
-from config import Config
+from config import Config, logger
 
 def main():
     """Start the bot."""
-    logging.basicConfig(level=logging.INFO)
-    logger = logging.getLogger(__name__)
-    
     logger.info("Starting Bot...")
     
     token = Config.TELEGRAM_BOT_TOKEN

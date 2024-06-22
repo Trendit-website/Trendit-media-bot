@@ -7,10 +7,9 @@ These functions perform common tasks that are used throughout the application.
 @link: https://github.com/zeddyemy
 @package: Trendit³ Bot
 '''
-import random, string, logging, time
-from slugify import slugify
+import random, string
 
-from config import Config
+from config import Config, logger
 
 
 
@@ -69,7 +68,7 @@ def console_log(label: str ='Label', data: any =None) -> None:
         data: The data to be printed. Can be of any type. Defaults to None.
     """
 
-    print(f'\n\n{label:-^50}\n', data, f'\n{"//":-^50}\n\n')
+    logger.info(f'\n\n{label:-^50}\n', data, f'\n{"//":-^50}\n\n')
 
 
 def log_exception(label: str ='EXCEPTION', data='Nothing') -> None:
@@ -81,7 +80,7 @@ def log_exception(label: str ='EXCEPTION', data='Nothing') -> None:
         data: Additional data to be logged along with the exception. Defaults to 'Nothing'.
     """
 
-    logging.exception(f'\n\n{label:-^50}\n {str(data)} \n {"//":-^50}\n\n')  # Log the error details for debugging
+    logger.exception(f'\n\n{label:-^50}\n {str(data)} \n {"//":-^50}\n\n')  # Log the error details for debugging
     
 def log_error(label: str ='EXCEPTION', data='Nothing') -> None:
     """
@@ -92,7 +91,7 @@ def log_error(label: str ='EXCEPTION', data='Nothing') -> None:
         data: Additional data to be logged along with the exception. Defaults to 'Nothing'.
     """
 
-    logging.error(msg=label, exc_info=data)
-    logging.exception(f'\n\n{label:-^50}\n {str(data)} \n {"//":-^50}\n\n')  # Log the error details for debugging
+    logger.error(msg=label, exc_info=data)
+    logger.exception(f'\n\n{label:-^50}\n {str(data)} \n {"//":-^50}\n\n')  # Log the error details for debugging
 
 

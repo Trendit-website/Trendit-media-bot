@@ -20,6 +20,8 @@ async def handle_login_credentials(update: Update, context: ContextTypes.DEFAULT
     if response_data and response_data["status"] == "success":
         console_log("response_data", response_data)
         
-        update.message.reply_text(f"You are now logged in! Your access token is {response_data["access_token"]}")
+        access_token: str = response_data["access_token"]
+        
+        update.message.reply_text(f"You are now logged in! Your access token is {access_token}")
     else:
         update.message.reply_text("Invalid credentials. Please try again.")

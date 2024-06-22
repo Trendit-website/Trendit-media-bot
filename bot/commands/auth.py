@@ -1,7 +1,7 @@
 from telegram import Update
 from telegram.ext import CallbackContext, ContextTypes
 
-def login(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+async def login(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     chat_id = update.message.chat_id
     user_id = update.message.from_user.id
 
@@ -10,7 +10,7 @@ def login(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     authenticated = False
 
     if authenticated:
-        update.message.reply_text("You are already logged in.")
+        await update.message.reply_text("You are already logged in.")
     else:
         # Send an authentication link or instructions
-        update.message.reply_text("Please log in using the link provided.")
+        await update.message.reply_text("Please log in using the link provided.")

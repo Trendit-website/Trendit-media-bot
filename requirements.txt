@@ -3,5 +3,6 @@ Deprecated==1.2.14
 gunicorn==21.2.0
 python-slugify==8.0.3
 python-telegram-bot==21.3
+requests==2.31.0
 rich==13.7.0
 six==1.16.0

@@ -1,11 +1,11 @@
 from telegram import Update
-from telegram.ext import CallbackContext, ContextTypes
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
 from config import Config
-from .utils.helpers import console_log
+from ..utils.helpers import console_log
+
 
 BOT_USERNAME = Config.BOT_USERNAME
-
 
 def handle_response(text: str) -> str:
     processed: str = text.lower()
@@ -23,14 +23,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message_type: str = update.message.chat.type
     text: str = update.message.text
     
-    console_log(
-        "Message Info",
-        (f"\
-            User ID: {update.message.from_user.id}\n \
-            Message Type: {message_type}\n \
-            Message: {text}"
-        )
-    )
+    message_info: str = f"User ID: {update.message.from_user.id}\n \
+                        Message Type: {message_type}\n \
+                        Message: {text}"
+    
+    console_log("Message Info", message_info)
     
     if message_type == "group" or message_type == "supergroup":
         if BOT_USERNAME in text:
@@ -44,6 +41,3 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     console_log("Bot:", response)
     await update.message.reply_text(response)
     
-
-async def error(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    console_log(f"Update {update} caused error {context.error}", context.error)

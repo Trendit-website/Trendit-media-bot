@@ -7,20 +7,19 @@ from ..extensions import api
 async def fetch_tasks(update: Update, context: ContextTypes.DEFAULT_TYPE):
     response_data = api.fetch_tasks()
     tasks = response_data["all_tasks"]
+    
+    message = "\n\n"
     if tasks:
-        message = "\n\n".join(
-                [
-                    f"- Task {task['id']}: \n \
-        • Task Type: {task["task_type"]} \n \
-        • Payment Status: {task["payment_status"]} \n \
-        • Platform: {task["platform"]} \n \
-        • Amount Paid: {task["fee_paid"]} \n \
-        \n \
-        • Status: {task["status"]} \n \
-        • Date Created: {task["date_created"]} \n \
-                    " for task in tasks
-                ]
-            )
+        for task in tasks:
+            task_id = task["id"]
+            task_type = task["task_type"]
+            payment_status = task["payment_status"]
+            platform = task["platform"]
+            fee_paid = task["fee_paid"]
+            status = task["status"]
+            date_created = task["date_created"]
+            message.join(f"- Task {task_id}: \n • Task Type: {task_type} \n • Payment Status: {payment_status} \n • Platform: {platform} \n • Amount Paid: {fee_paid} \n • Status: {status} \n • Date Created: {date_created} \n\n ")
+        
         
         await update.message.reply_text(f"Tasks:\n{message}")
     else:

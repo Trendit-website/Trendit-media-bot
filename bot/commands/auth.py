@@ -3,6 +3,7 @@ from telegram.ext import CallbackContext, ContextTypes
 
 from ..trendit.auth import trendit_login
 from ..utils.helpers import console_log
+from ..extensions import api
 
 async def login(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     chat_id = update.message.chat_id

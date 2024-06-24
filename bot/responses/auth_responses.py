@@ -9,6 +9,8 @@ from ..trendit.auth import trendit_login
 async def handle_login_credentials(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user_id = update.message.from_user.id
     credentials = update.message.text.split()  # Assuming space-separated username and password
+    
+    console_log("credentials", credentials)
 
     # Validate credentials (you can replace this with your own logic)
     data = {

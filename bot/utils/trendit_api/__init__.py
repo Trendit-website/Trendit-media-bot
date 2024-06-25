@@ -114,7 +114,7 @@ class BackendAPI:
         return response_data if response.status_code == 200 else None
 
     def fetch_wallet_balance(self):
-        url = f"{self.base_url}/wallet/balance"
+        url = f"{self.admin_base_url}/balance"
         headers = {"Authorization": f"Bearer {self.token}"}
         
         try:

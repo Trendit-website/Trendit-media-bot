@@ -8,7 +8,7 @@ async def fetch_tasks(update: Update, context: ContextTypes.DEFAULT_TYPE):
     response_data = api.fetch_tasks()
     tasks = response_data["all_tasks"]
     
-    message = "\n\n"
+    message = f""
     if tasks:
         for task in tasks:
             task_id = task["id"]
@@ -18,10 +18,13 @@ async def fetch_tasks(update: Update, context: ContextTypes.DEFAULT_TYPE):
             fee_paid = task["fee_paid"]
             status = task["status"]
             date_created = task["date_created"]
-            message.join(f"- Task {task_id}: \n • Task Type: {task_type} \n • Payment Status: {payment_status} \n • Platform: {platform} \n • Amount Paid: {fee_paid} \n • Status: {status} \n • Date Created: {date_created} \n\n ")
+            
+            task_info = (f"- Task {task_id}: \n • Task Type: {task_type} \n • Payment Status: {payment_status} \n • Platform: {platform} \n • Amount Paid: {fee_paid} \n • Status: {status} \n • Date Created: {date_created} ")
+            
+            formatted = f"\n\n{task_id:-^29}\n {task_info} \n{'//':-^29}"
+            message = message + (formatted)
         
-        
-        await update.message.reply_text(f"Tasks:\n{message}")
+        await update.message.reply_text(f"10 Tasks per Page:\n{message}")
     else:
         await update.message.reply_text("No tasks available.")
 

@@ -13,6 +13,7 @@ from .auth import login
 from .task import fetch_tasks, reject_task, approve_task
 from .finance import fetch_balance
 from .services import send_notification, update_prices
+from .stats import fetch_stats
 
 def register_commands(app: Application):
     
@@ -26,3 +27,6 @@ def register_commands(app: Application):
     app.add_handler(CommandHandler("approve", approve_task))
     
     app.add_handler(CommandHandler("group_id", group_id))
+    
+    
+    app.add_handler(CommandHandler("fetch_stats", fetch_stats))

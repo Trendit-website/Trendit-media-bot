@@ -101,7 +101,7 @@ class BackendAPI:
         return response_data if response.status_code == 200 else None
     
     def reject_social_profile(self, profile_id):
-        url = f"{self.admin_base_url}/social-profiles/{profile_id}/approve"
+        url = f"{self.admin_base_url}/social-profiles/{profile_id}/reject"
         headers = {"Authorization": f"Bearer {self.token}"}
         
         try:
@@ -127,7 +127,7 @@ class BackendAPI:
         return response_data if response.status_code == 200 else None
 
     def fetch_stats(self):
-        url = f"{self.base_url}/stats"
+        url = f"{self.admin_base_url}/stats"
         headers = {"Authorization": f"Bearer {self.token}"}
         
         try:

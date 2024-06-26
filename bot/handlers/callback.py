@@ -71,7 +71,7 @@ async def fetch_stats_callback(update: Update, context: ContextTypes.DEFAULT_TYP
         approved_tasks = stats["approved_tasks"]
         rejected_tasks = stats["declined_tasks"]
         
-        message = (f"Here are the stats for today: \n\n • New Sig Ups: {new_signups} \n • New Task Orders: {new_task} \n • Approved Task Orders: {approved_tasks} \n • Rejected Task Orders: {rejected_tasks} \n\n\n DATE: {today_date}")
+        message = (f"Here are the stats for today: \n\n • New Sig Ups: {new_signups} \n • New Task Orders: {new_task} \n • Approved Task Orders: {approved_tasks} \n • Rejected Task Orders: {rejected_tasks} \n")
         
         await update.callback_query.message.reply_text(f"{message}")
     else:

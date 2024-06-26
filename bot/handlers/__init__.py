@@ -15,5 +15,5 @@ def add_callback_handlers(app: Application):
     
     # Add individual handlers for new commands
     app.add_handler(CallbackQueryHandler(fetch_balance, pattern='fetch_balance'))
-    app.add_handler(CallbackQueryHandler(fetch_stats_callback, pattern='fetch_stats_callback'))
+    app.add_handler(CallbackQueryHandler(fetch_stats_callback, pattern='fetch_stats'))
     app.add_handler(CallbackQueryHandler(send_notification, pattern='send_notification'))

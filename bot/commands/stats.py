@@ -21,8 +21,6 @@ async def fetch_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
         message = (f"Here are the stats for today: \n\n • New Sign Ups: {new_signups} \n • New Task Orders: {new_task} \n • Approved Task Orders: {approved_tasks} \n • Rejected Task Orders: {rejected_tasks} \n")
         
-        await update.message.reply_text(f"{message}")
+        await update.message.reply_text(f'{message} \n\n\n DATE: {today_date}')
     else:
         await update.message.reply_text(f"Failed to fetch Stats: \n\n {response_data["message"]}")
-    
-    await update.message.reply_text(f'{message} \n\n\n DATE: {today_date}')

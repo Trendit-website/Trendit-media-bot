@@ -8,6 +8,7 @@ from ..extensions import api
 async def fetch_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Send a message when the command /fetch_stats is issued."""
     response_data = api.fetch_stats()
+    response_data_msg = response_data["message"]
     stats = response_data["stats"]
     
     today = date.today()
@@ -23,4 +24,4 @@ async def fetch_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
         await update.message.reply_text(f'{message} \n\n\n DATE: {today_date}')
     else:
-        await update.message.reply_text(f"Failed to fetch Stats: \n\n {response_data["message"]}")
+        await update.message.reply_text(f"Failed to fetch Stats: \n\n {response_data_msg}")

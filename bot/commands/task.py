@@ -19,7 +19,14 @@ async def fetch_tasks(update: Update, context: ContextTypes.DEFAULT_TYPE):
             status = task["status"]
             date_created = task["date_created"]
             
-            task_info = (f"- Task {task_id}: \n • Task Type: {task_type} \n • Payment Status: {payment_status} \n • Platform: {platform} \n • Amount Paid: {fee_paid} \n • Status: {status} \n • Date Created: {date_created} ")
+            requested_count = task.get("posts_count")
+            
+            if not requested_count:
+                requested_count = task.get("engagements_count")
+            
+            count = "No of posts" if task.get("posts_counts") else "No of Engagements"
+            
+            task_info = (f"- Task {task_id}: \n • Task Type: {task_type} \n • Payment Status: {payment_status} \n • Platform: {platform} \n • Amount Paid: {fee_paid} \n • {count}: {requested_count} \n • Status: {status} \n • Date Created: {date_created} ")
             
             formatted = f"\n\n{task_id:-^29}\n {task_info} \n{'//':-^29}"
             message = message + (formatted)

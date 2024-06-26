@@ -64,8 +64,6 @@ async def fetch_stats_callback(update: Update, context: ContextTypes.DEFAULT_TYP
     today = date.today()
     today_date = today.strftime("%B %d, %Y")
     
-    firstname = update.message.from_user.first_name
-    
     if stats:
         new_signups = stats["new_signups"]
         new_task = stats["new_task"]

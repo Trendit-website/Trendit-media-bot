@@ -13,14 +13,14 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
     console_log("query", query)
     console_log("action", query.data)
     
-    if query.data in ["fetch_balance", "fetch_stats", "send_notification"]:
+    if query.data in ["fetch_balance", "fetch_stats_callback", "send_notification"]:
         action = query.data
         
         if action == "fetch_balance":
             await fetch_balance(update, context)
         elif action == "send_notification":
             await send_notification(update, context)
-        elif action == "fetch_stats":
+        elif action == "fetch_stats_callback":
             await fetch_stats_callback(update, context)
     else:
         data = query.data.split('_')

@@ -4,8 +4,8 @@ from telegram.ext import CallbackContext, ContextTypes
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Send a message when the command /start is issued."""
     keyboard = [
-        [InlineKeyboardButton("Fetch Balance", callback_data='fetch_balance')],
         [InlineKeyboardButton("Fetch Stats For The Day", callback_data='fetch_stats_callback')],
+        [InlineKeyboardButton("Fetch Balance", callback_data='fetch_balance')],
         [InlineKeyboardButton("Send Notification", callback_data='send_notification')],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)

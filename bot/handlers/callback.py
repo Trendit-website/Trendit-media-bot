@@ -1,6 +1,5 @@
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
-from datetime import date
 
 from ..extensions import api
 from ..utils.helpers import console_log
@@ -61,16 +60,15 @@ async def fetch_stats_callback(update: Update, context: ContextTypes.DEFAULT_TYP
     response_data = api.fetch_stats()
     stats = response_data["stats"]
     
-    today = date.today()
-    today_date = today.strftime("%B %d, %Y")
     
     if stats:
         new_signups = stats["new_signups"]
         new_task = stats["new_task"]
         approved_tasks = stats["approved_tasks"]
         rejected_tasks = stats["declined_tasks"]
+        pending_tasks = stats["pending_tasks"]
         
-        message = (f"Here are the stats for today: \n\n • New Sig Ups: {new_signups} \n • New Task Orders: {new_task} \n • Approved Task Orders: {approved_tasks} \n • Rejected Task Orders: {rejected_tasks} \n\n\n DATE: {today_date}")
+        message = (f"Here are the stats for today: \n\n • New Sign Ups: {new_signups} \n • New Task Orders: {new_task} \n • Approved Task Orders: {approved_tasks} \n • Rejected Task Orders: {rejected_tasks} \n • Pending Task Orders: {pending_tasks} \n")
         
         await update.callback_query.message.reply_text(f"{message}")
     else:

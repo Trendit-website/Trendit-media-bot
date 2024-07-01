@@ -7,6 +7,7 @@ class BackendAPI:
     def __init__(self):
         self.base_url = f"{Config.API_DOMAIN_NAME}/api"
         self.admin_base_url = f"{Config.API_DOMAIN_NAME}/api/admin"
+        self.telegram_base_url = f"{Config.API_DOMAIN_NAME}/api/telegram"
         self.token = self.get_jwt_token()
     
     def log_response(self, response):
@@ -87,6 +88,19 @@ class BackendAPI:
         
         return response_data if response.status_code == 200 else None
 
+    def webhook_get_pending_social_profiles(self):
+        url = f"{self.telegram_base_url}/pending-socials/"
+        headers = {"Authorization": f"Bearer {self.token}"}
+        
+        try:
+            response = requests.post(url, headers=headers)
+            self.log_response(response)
+            response_data = response.json()
+        except JSONDecodeError as e:
+            console_log("Failed to decode Response", e)
+        
+        return response_data if response.status_code == 200 else None
+    
     def approve_social_profile(self, profile_id):
         url = f"{self.admin_base_url}/social-profiles/{profile_id}/approve"
         headers = {"Authorization": f"Bearer {self.token}"}
@@ -138,4 +152,5 @@ class BackendAPI:
             console_log("Failed to decode Response", e)
         
         return response_data if response.status_code == 200 else None
+    
     

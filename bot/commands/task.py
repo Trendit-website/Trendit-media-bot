@@ -37,7 +37,7 @@ async def fetch_tasks(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def pending_task_orders(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    response_data = api.webhook_get_pending_tasks()
+    response_data = api.send_pending_tasks()
     response_data_msg = response_data.get("message", "Fetching pending task orders")
     pending_tasks = response_data.get("pending_tasks", None)
     

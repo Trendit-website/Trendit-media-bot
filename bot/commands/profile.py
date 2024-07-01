@@ -6,7 +6,7 @@ from ..extensions import api
 
 async def pending_social_profiles(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
-    response_data = api.webhook_get_pending_social_profiles()
+    response_data = api.send_pending_social_profiles()
     response_data_msg = response_data.get("message", "Fetching pending social profiles")
     pending_social_profiles = response_data.get("pending_social_profiles", None)
     

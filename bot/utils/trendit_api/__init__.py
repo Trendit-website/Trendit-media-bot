@@ -88,7 +88,7 @@ class BackendAPI:
         
         return response_data if response.status_code == 200 else None
 
-    def webhook_get_pending_social_profiles(self):
+    def send_pending_social_profiles(self):
         url = f"{self.telegram_base_url}/pending-socials"
         headers = {"Authorization": f"Bearer {self.token}"}
         
@@ -101,7 +101,7 @@ class BackendAPI:
         
         return response_data
     
-    def webhook_get_pending_tasks(self):
+    def send_pending_tasks(self):
         url = f"{self.telegram_base_url}/pending-tasks"
         headers = {"Authorization": f"Bearer {self.token}"}
         

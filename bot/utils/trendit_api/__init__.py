@@ -99,7 +99,7 @@ class BackendAPI:
         except JSONDecodeError as e:
             console_log("Failed to decode Response", e)
         
-        return response_data if response.status_code == 200 else None
+        return response_data
     
     def approve_social_profile(self, profile_id):
         url = f"{self.admin_base_url}/social-profiles/{profile_id}/approve"

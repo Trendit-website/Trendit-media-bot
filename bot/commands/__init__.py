@@ -10,7 +10,7 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 
 from .base import start, help, group_id
 from .auth import login
-from .task import fetch_tasks, reject_task, approve_task
+from .task import fetch_tasks, reject_task, approve_task, pending_task_orders
 from .finance import fetch_balance
 from .services import send_notification, update_prices
 from .stats import fetch_stats
@@ -23,9 +23,11 @@ def register_commands(app: Application):
     app.add_handler(CommandHandler("help", help))
     app.add_handler(CommandHandler("login", login))
     
+    # tasks
     app.add_handler(CommandHandler("tasks", fetch_tasks))
     app.add_handler(CommandHandler("reject", reject_task))
     app.add_handler(CommandHandler("approve", approve_task))
+    app.add_handler(CommandHandler("pending_task_orders", pending_task_orders))
     
     app.add_handler(CommandHandler("group_id", group_id))
     

@@ -4,7 +4,7 @@ from telegram.ext import CallbackContext, ContextTypes
 
 from ..extensions import api
 
-async def pending_social_profile(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def pending_social_profiles(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Send a message when the command /fetch_stats is issued."""
     response_data = api.webhook_get_pending_social_profiles()
     response_data_msg = response_data["message"]

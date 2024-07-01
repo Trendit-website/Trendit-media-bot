@@ -14,7 +14,7 @@ from .task import fetch_tasks, reject_task, approve_task
 from .finance import fetch_balance
 from .services import send_notification, update_prices
 from .stats import fetch_stats
-from .profile import pending_social_profile
+from .profile import pending_social_profiles
 
 def register_commands(app: Application):
     
@@ -33,4 +33,4 @@ def register_commands(app: Application):
     app.add_handler(CommandHandler("fetch_stats", fetch_stats))
     
     # social Profiles
-    app.add_handler(CommandHandler("pending_social_profile", pending_social_profile))
+    app.add_handler(CommandHandler("pending_social_profiles", pending_social_profiles))

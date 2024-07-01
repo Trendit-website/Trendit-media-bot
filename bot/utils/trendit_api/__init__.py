@@ -93,7 +93,7 @@ class BackendAPI:
         headers = {"Authorization": f"Bearer {self.token}"}
         
         try:
-            response = requests.post(url, headers=headers)
+            response = requests.get(url, headers=headers)
             self.log_response(response)
             response_data = response.json()
         except JSONDecodeError as e:
